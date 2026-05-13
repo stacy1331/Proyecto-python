@@ -19,10 +19,17 @@ class UsuarioRepository:
             data = json.load(file)
 
         for item in data:
-            usuario = Usuario.from_dict(item)
+            usuario = Usuario(
+                item["cedula"],
+                item["nombre"],
+                item["correo"],
+                item["cpntrasena"],
+                item["rol"]
+            )
+
             self._usuarios.append(usuario)
             self._usuarios_by_cedula[usuario.cedula] = usuario
-            self._usuarios_by_correo[usuario.correo] = usuario
+            self._usuarios_by_correo[usuario]
 
     def _save(self):
         os.makedirs(os.path.dirname(self.filename), exist_ok=True)
