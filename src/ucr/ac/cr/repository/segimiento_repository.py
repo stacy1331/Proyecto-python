@@ -19,35 +19,48 @@ class SeguimientoRepository:
             data = json.load(file)
 
         for item in data:
-            seguimiento = Seguimiento.from_dict(item)
-            self._seguimientos.append(seguimiento)
-            self._seguimientos_by_codigo[seguimiento.codigo_seguimiento] = seguimiento
+            seguimiento = Seguimiento(
+                item["codigo_seguimiento"],
+                item["codigo_aviso"],
+                item["estado"],
+                item["observacion"],
+                item["fecha_actualizacion"],
+                item["responsable"]
+            )
 
-            if seguimiento.codigo_aviso not in self._seguimientos_by_aviso:
-                self._seguimientos_by_aviso[seguimiento.codigo_aviso] = []
-
-            self._seguimientos_by_aviso[seguimiento.codigo_aviso].append(seguimiento)
+            self._agregar_a_memoria(seguimiento)
 
     def _save(self):
         os.makedirs(os.path.dirname(self.filename), exist_ok=True)
 
-        data = [seguimiento.to_dict() for seguimiento in self._seguimientos]
+        data = []
+
+        for seguimiento in self._seguimientos:
+            data.append({
+                "codigo_seguimiento": seguimiento.codigo_seguimiento,
+                "codigo_aviso": seguimiento.codigo_aviso,
+                "estado": seguimiento.estado,
+                "observacion": seguimiento.observacion,
+                "fecha_actualizacion": seguimiento.fecha_actualizacion,
+                "responsable": seguimiento.responsable
+            })
 
         with open(self.filename, "w", encoding="utf-8") as file:
             json.dump(data, file, indent=4, ensure_ascii=False)
+
+    def _agregar_a_memoria(self, seguimiento):
+        self._seguimientos.append(seguimiento)
+        self._seguimientos_by_codigo[seguimiento.codigo_seguimiento] = seguimiento
+
+        if seguimiento.codigo_seguimiento not in self._seguimientos_by_aviso:
+            self._seguimientos_by_aviso[seguimiento.codigo_seguimiento] = []
+        self._seguimientos_by_aviso[seguimiento.codigo_aviso].append(seguimiento)
 
     def add(self, seguimiento: Seguimiento):
         if seguimiento.codigo_seguimiento in self._seguimientos_by_codigo:
             raise ValueError("Ya existe un seguimiento con ese código.")
 
-        self._seguimientos.append(seguimiento)
-        self._seguimientos_by_codigo[seguimiento.codigo_seguimiento] = seguimiento
-
-        if seguimiento.codigo_aviso not in self._seguimientos_by_aviso:
-            self._seguimientos_by_aviso[seguimiento.codigo_aviso] = []
-
-        self._seguimientos_by_aviso[seguimiento.codigo_aviso].append(seguimiento)
-
+        self._agregar_a_memoria(seguimiento)
         self._save()
 
     def get_by_codigo(self, codigo_seguimiento: str):

@@ -20,13 +20,33 @@ class AvisoRepository:
             data = json.load(file)
 
         for item in data:
-            aviso = Aviso.from_dict(item)
+            aviso = Aviso(
+                item["codigo"],
+                item["cedula_usuario"],
+                item["tipo_dano"],
+                item["descripcion"],
+                item["ubicacion"],
+                item["fecha"],
+                item["estado"]
+            )
+
             self._agregar_a_memoria(aviso)
 
     def _save(self):
         os.makedirs(os.path.dirname(self.filename), exist_ok=True)
 
-        data = [aviso.to_dict() for aviso in self._avisos]
+        data = []
+
+        for aviso in self._avisos:
+            data.append({
+                "codigo": aviso.codigo,
+                "cedula_usuario": aviso.cedula_usuario,
+                "tipo_dano": aviso.tipo_dano,
+                "descripcion": aviso.descripcion,
+                "ubicacion": aviso.ubicacion,
+                "fecha": aviso.fecha,
+                "estado": aviso.estado
+            })
 
         with open(self.filename, "w", encoding="utf-8") as file:
             json.dump(data, file, indent=4, ensure_ascii=False)
@@ -69,10 +89,9 @@ class AvisoRepository:
         if aviso_actualizado.codigo not in self._avisos_by_codigo:
             raise ValueError("No existe un aviso con ese código.")
 
-        for index, aviso in enumerate(self._avisos):
-            if aviso.codigo == aviso_actualizado.codigo:
-                self._avisos[index] = aviso_actualizado
-                break
+        for i in range(len(self._avisos)):
+            if self._avisos[i].codigo == aviso_actualizado.codigo:
+                self._avisos[i] = aviso_actualizado
 
         self._rebuild_indexes()
         self._save()

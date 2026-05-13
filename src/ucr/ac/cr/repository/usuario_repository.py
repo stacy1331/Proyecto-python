@@ -29,12 +29,21 @@ class UsuarioRepository:
 
             self._usuarios.append(usuario)
             self._usuarios_by_cedula[usuario.cedula] = usuario
-            self._usuarios_by_correo[usuario]
+            self._usuarios_by_correo[usuario] = usuario
 
     def _save(self):
         os.makedirs(os.path.dirname(self.filename), exist_ok=True)
 
-        data = [usuario.to_dict() for usuario in self._usuarios]
+        data = []
+
+        for usuario in self._usuarios:
+            data.append({
+                "cedula": usuario.cedula,
+                "nombre": usuario.nombre,
+                "correo": usuario.correo,
+                "contrasena": usuario.contrasena,
+                "rol": usuario.rol
+            })
 
         with open(self.filename, "w", encoding="utf-8") as file:
             json.dump(data, file, indent=4, ensure_ascii=False)
