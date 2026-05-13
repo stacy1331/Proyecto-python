@@ -85,4 +85,13 @@ class SeguimientoRepository:
             if self._seguimientos[i].codigo_seguimiento == seguimiento_actualizado.codigo_seguimiento:
                 self._seguimientos[i] = seguimiento_actualizado
 
+        self._seguimientos_by_codigo = {}
+        self._seguimientos_by_aviso = {}
+
+        seguimientos_actuales = list(self._seguimientos)
+        self._seguimientos = []
+
+        for seguimiento in seguimientos_actuales:
+            self._agregar_a_memoria(seguimiento)
+
         self._save()
