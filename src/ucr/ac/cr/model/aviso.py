@@ -8,28 +8,5 @@ class Aviso:
         self.fecha = fecha
         self.estado = estado
 
-    def to_dict(self):
-        return {
-            "codigo": self.codigo,
-            "cedula_usuario": self.cedula_usuario,
-            "tipo_dano": self.tipo_dano,
-            "descripcion": self.descripcion,
-            "ubicacion": self.ubicacion,
-            "fecha": self.fecha,
-            "estado": self.estado
-        }
-
-    @staticmethod
-    def from_dict(data):
-        return Aviso(
-            data["codigo"],
-            data["cedula_usuario"],
-            data["tipo_dano"],
-            data["descripcion"],
-            data["ubicacion"],
-            data["fecha"],
-            data.get("estado", "Pendiente")
-        )
-
     def __str__(self):
-        return f"{self.codigo} - {self.tipo_dano} - {self.estado}"
+        return f"Codigo: {self.codigo} - Cedula: {self.cedula_usuario} - Tipo daño: {self.tipo_dano} - Descripcion: {self.descripcion} - Ubicacion: {self.ubicacion} - Fecha: {self.fecha} - Estado: {self.estado}"
