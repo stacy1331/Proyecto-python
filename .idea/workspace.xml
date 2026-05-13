@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6af11322-1444-499f-9eac-91f29e9e7304" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ucr/ac/cr/data/avisos.json.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ucr/ac/cr/data/avisos.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ucr/ac/cr/data/seguimientos.json.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ucr/ac/cr/data/seguimientos.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ucr/ac/cr/data/usuarios.json.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ucr/ac/cr/data/usuarios.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ucr/ac/cr/model/usuario.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ucr/ac/cr/model/usuario.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,9 +22,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "solanoramirezpedrojose-ux"
+  }
 }]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/stacy1331/Proyecto-python.git",
+    "accountId": "36f5b1fd-1be3-49f6-bd55-38c4b9185b4f"
+  }
+}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="3DgEHlI4jkb5BJOEv3wTixA7wKi" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -40,8 +49,11 @@
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master"
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/solan/OneDrive/Desktop/proyecto/Proyecto-python"
   }
 }]]></component>
   <component name="SharedIndexes">
