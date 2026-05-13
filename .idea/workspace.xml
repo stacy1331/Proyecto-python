@@ -5,46 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6af11322-1444-499f-9eac-91f29e9e7304" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/SistemaAvisosCiudadanos.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ucr/ac/cr/controller/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ucr/ac/cr/controller/aviso_controller.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ucr/ac/cr/controller/login_controller.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ucr/ac/cr/controller/main_controller.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ucr/ac/cr/controller/reporte_controller.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ucr/ac/cr/controller/seguimiento_controller.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ucr/ac/cr/controller/usuario_controller.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ucr/ac/cr/data/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ucr/ac/cr/data/avisos.json.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ucr/ac/cr/data/seguimientos.json.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ucr/ac/cr/data/usuarios.json.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ucr/ac/cr/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ucr/ac/cr/model/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ucr/ac/cr/model/aviso.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ucr/ac/cr/model/seguimiento.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ucr/ac/cr/model/usuario.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ucr/ac/cr/repository/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ucr/ac/cr/repository/aviso_repository.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ucr/ac/cr/repository/segimiento_repository.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ucr/ac/cr/repository/usuario_repository.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ucr/ac/cr/service/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ucr/ac/cr/service/auth_service.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ucr/ac/cr/service/aviso_service.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ucr/ac/cr/service/reporte_service.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ucr/ac/cr/service/seguimiento_service.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ucr/ac/cr/service/usuario_service.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ucr/ac/cr/view/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ucr/ac/cr/view/avisos_view.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ucr/ac/cr/view/login_view.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ucr/ac/cr/view/main_view.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ucr/ac/cr/view/menu_view.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ucr/ac/cr/view/reportes_view.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ucr/ac/cr/view/seguimientos_view.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ucr/ac/cr/view/usuario_view.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ucr/ac/cr/data/avisos.json.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ucr/ac/cr/data/avisos.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ucr/ac/cr/data/seguimientos.json.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ucr/ac/cr/data/seguimientos.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ucr/ac/cr/data/usuarios.json.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ucr/ac/cr/data/usuarios.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
