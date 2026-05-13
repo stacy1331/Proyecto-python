@@ -52,8 +52,9 @@ class SeguimientoRepository:
         self._seguimientos.append(seguimiento)
         self._seguimientos_by_codigo[seguimiento.codigo_seguimiento] = seguimiento
 
-        if seguimiento.codigo_seguimiento not in self._seguimientos_by_aviso:
-            self._seguimientos_by_aviso[seguimiento.codigo_seguimiento] = []
+        if seguimiento.codigo_aviso not in self._seguimientos_by_aviso:
+            self._seguimientos_by_aviso[seguimiento.codigo_aviso] = []
+
         self._seguimientos_by_aviso[seguimiento.codigo_aviso].append(seguimiento)
 
     def add(self, seguimiento: Seguimiento):
@@ -74,3 +75,14 @@ class SeguimientoRepository:
 
     def exists(self, codigo_seguimiento: str) -> bool:
         return codigo_seguimiento in self._seguimientos_by_codigo
+
+    def update(self, seguimiento_actualizado):
+
+        if seguimiento_actualizado.codigo_seguimiento not in self._seguimientos_by_codigo:
+            raise ValueError("No existe un seguimiento con ese código.")
+
+        for i in range(len(self._seguimientos)):
+            if self._seguimientos[i].codigo_seguimiento == seguimiento_actualizado.codigo_seguimiento:
+                self._seguimientos[i] = seguimiento_actualizado
+
+        self._save()

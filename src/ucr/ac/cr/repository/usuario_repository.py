@@ -23,13 +23,13 @@ class UsuarioRepository:
                 item["cedula"],
                 item["nombre"],
                 item["correo"],
-                item["cpntrasena"],
+                item["contrasena"],
                 item["rol"]
             )
 
             self._usuarios.append(usuario)
             self._usuarios_by_cedula[usuario.cedula] = usuario
-            self._usuarios_by_correo[usuario] = usuario
+            self._usuarios_by_correo[usuario.correo] = usuario
 
     def _save(self):
         os.makedirs(os.path.dirname(self.filename), exist_ok=True)
