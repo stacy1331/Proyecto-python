@@ -1,0 +1,16 @@
+[
+    {
+        "cedula": "000000000",
+        "nombre": "Administrador",
+        "correo": "admin@sistema.com",
+        "contrasena": "admin123",
+        "rol": "administrador"
+    },
+    {
+        "cedula": "123456789",
+        "nombre": "Pedro Solano",
+        "correo": "pedroSolano@gmail.com",
+        "contrasena": "PedroSKy14.",
+        "rol": "ciudadano"
+    }
+]
