@@ -19,5 +19,12 @@
         "correo": "dysolano3@gmail.com",
         "contrasena": "Milo1234",
         "rol": "ciudadano"
+    },
+    {
+        "cedula": "119490146",
+        "nombre": "maria stacy",
+        "correo": "maria@gmai.com",
+        "contrasena": "123",
+        "rol": "ciudadano"
     }
 ]
