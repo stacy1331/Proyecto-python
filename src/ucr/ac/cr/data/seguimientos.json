@@ -6,5 +6,13 @@
         "observacion": "Se fue a realizar la inspeccion de los daños",
         "fecha_actualizacion": "20-02-2026",
         "responsable": "Sebastian"
+    },
+    {
+        "codigo_seguimiento": "2",
+        "codigo_aviso": "2",
+        "estado": "En proceso",
+        "observacion": "Se fuga el agua",
+        "fecha_actualizacion": "17/05/2026",
+        "responsable": "Maryam"
     }
 ]

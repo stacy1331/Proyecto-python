@@ -49,6 +49,13 @@ class SeguimientoRepository:
             json.dump(data, file, indent=4, ensure_ascii=False)
 
     def _agregar_a_memoria(self, seguimiento):
+        seguimiento.codigo_seguimiento = str(seguimiento.codigo_seguimiento).strip()
+        seguimiento.codigo_aviso = str(seguimiento.codigo_aviso).strip()
+        seguimiento.estado = str(seguimiento.estado).strip()
+        seguimiento.observacion = str(seguimiento.observacion).strip()
+        seguimiento.fecha_actualizacion = str(seguimiento.fecha_actualizacion).strip()
+        seguimiento.responsable = str(seguimiento.responsable).strip()
+
         self._seguimientos.append(seguimiento)
         self._seguimientos_by_codigo[seguimiento.codigo_seguimiento] = seguimiento
 
@@ -65,16 +72,16 @@ class SeguimientoRepository:
         self._save()
 
     def get_by_codigo(self, codigo_seguimiento: str):
-        return self._seguimientos_by_codigo.get(codigo_seguimiento)
+        return self._seguimientos_by_codigo.get(str(codigo_seguimiento).strip())
 
     def get_by_aviso(self, codigo_aviso: str):
-        return list(self._seguimientos_by_aviso.get(codigo_aviso, []))
+        return list(self._seguimientos_by_aviso.get(str(codigo_aviso).strip(), []))
 
     def get_all(self):
         return list(self._seguimientos)
 
     def exists(self, codigo_seguimiento: str) -> bool:
-        return codigo_seguimiento in self._seguimientos_by_codigo
+        return str(codigo_seguimiento).strip() in self._seguimientos_by_codigo
 
     def update(self, seguimiento_actualizado):
 

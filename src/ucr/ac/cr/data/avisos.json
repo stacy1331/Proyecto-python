@@ -6,6 +6,15 @@
         "descripcion": "Acera frente a la escuela dañana por explosion",
         "ubicacion": "Palmares",
         "fecha": "12-01-2016",
+        "estado": "Resuelto"
+    },
+    {
+        "codigo": "2",
+        "cedula_usuario": "208240499",
+        "tipo_dano": "Fuga de agua",
+        "descripcion": "Fuga de agua, donde el agua se fuga",
+        "ubicacion": "Calle Vargas",
+        "fecha": "16/05/2026",
         "estado": "En proceso"
     }
 ]

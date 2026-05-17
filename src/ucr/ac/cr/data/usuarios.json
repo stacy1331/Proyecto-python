@@ -12,5 +12,12 @@
         "correo": "pedroSolano@gmail.com",
         "contrasena": "PedroSKy14.",
         "rol": "ciudadano"
+    },
+    {
+        "cedula": "208240499",
+        "nombre": "Dylana",
+        "correo": "dysolano3@gmail.com",
+        "contrasena": "Milo1234",
+        "rol": "ciudadano"
     }
 ]

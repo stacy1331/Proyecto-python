@@ -52,15 +52,25 @@ class AvisoRepository:
             json.dump(data, file, indent=4, ensure_ascii=False)
 
     def _agregar_a_memoria(self, aviso: Aviso):
+        aviso.codigo = str(aviso.codigo).strip()
+        aviso.cedula_usuario = str(aviso.cedula_usuario).strip()
+        aviso.tipo_dano = str(aviso.tipo_dano).strip()
+        aviso.descripcion = str(aviso.descripcion).strip()
+        aviso.ubicacion = str(aviso.ubicacion).strip()
+        aviso.fecha = str(aviso.fecha).strip()
+        aviso.estado = str(aviso.estado).strip()
+
         self._avisos.append(aviso)
         self._avisos_by_codigo[aviso.codigo] = aviso
 
         if aviso.cedula_usuario not in self._avisos_by_usuario:
             self._avisos_by_usuario[aviso.cedula_usuario] = []
+
         self._avisos_by_usuario[aviso.cedula_usuario].append(aviso)
 
         if aviso.estado not in self._avisos_by_estado:
             self._avisos_by_estado[aviso.estado] = []
+
         self._avisos_by_estado[aviso.estado].append(aviso)
 
     def add(self, aviso: Aviso):
@@ -71,19 +81,19 @@ class AvisoRepository:
         self._save()
 
     def get_by_codigo(self, codigo: str):
-        return self._avisos_by_codigo.get(codigo)
+        return self._avisos_by_codigo.get(str(codigo).strip())
 
     def get_by_usuario(self, cedula_usuario: str):
-        return list(self._avisos_by_usuario.get(cedula_usuario, []))
+        return list(self._avisos_by_usuario.get(str(cedula_usuario).strip(), []))
 
     def get_by_estado(self, estado: str):
-        return list(self._avisos_by_estado.get(estado, []))
+        return list(self._avisos_by_estado.get(str(estado).strip(), []))
 
     def get_all(self):
         return list(self._avisos)
 
     def exists(self, codigo: str) -> bool:
-        return codigo in self._avisos_by_codigo
+        return str(codigo).strip() in self._avisos_by_codigo
 
     def update(self, aviso_actualizado: Aviso):
         if aviso_actualizado.codigo not in self._avisos_by_codigo:

@@ -10,80 +10,93 @@ class ReportesView(tk.Frame):
         self._actualizar()
 
     def _build(self):
-        resumen = ttk.LabelFrame(self, text="Estadísticas generales", padding=12)
-        resumen.pack(fill="x", padx=12, pady=12)
+        self.columnconfigure(0, weight=1)
+        self.rowconfigure(2, weight=1)
 
-        self.lbl_total = ttk.Label(resumen, text="Total de avisos: 0", font=("Arial", 12, "bold"))
-        self.lbl_pendientes = ttk.Label(resumen, text="Pendientes: 0", font=("Arial", 12))
-        self.lbl_en_proceso = ttk.Label(resumen, text="En proceso: 0", font=("Arial", 12))
-        self.lbl_resueltos = ttk.Label(resumen, text="Resueltos: 0", font=("Arial", 12))
+        resumen = ttk.LabelFrame(self, text="Estadísticas generales", padding=10)
+        resumen.grid(row=0, column=0, padx=10, pady=8, sticky="ew")
 
-        self.lbl_total.grid(row=0, column=0, padx=10, pady=6, sticky="w")
-        self.lbl_pendientes.grid(row=1, column=0, padx=10, pady=6, sticky="w")
-        self.lbl_en_proceso.grid(row=2, column=0, padx=10, pady=6, sticky="w")
-        self.lbl_resueltos.grid(row=3, column=0, padx=10, pady=6, sticky="w")
+        resumen.columnconfigure(0, weight=1)
+        resumen.columnconfigure(1, weight=1)
 
-        ttk.Button(resumen, text="Actualizar reportes", command=self._actualizar).grid(
-            row=0, column=1, rowspan=4, padx=20, pady=10, sticky="ns"
+        self.lbl_total = ttk.Label(resumen, text="Total de avisos: 0", font=("Arial", 11, "bold"))
+        self.lbl_pendientes = ttk.Label(resumen, text="Pendientes: 0", font=("Arial", 10))
+        self.lbl_en_proceso = ttk.Label(resumen, text="En proceso: 0", font=("Arial", 10))
+        self.lbl_resueltos = ttk.Label(resumen, text="Resueltos: 0", font=("Arial", 10))
+
+        self.lbl_total.grid(row=0, column=0, padx=10, pady=3, sticky="w")
+        self.lbl_pendientes.grid(row=1, column=0, padx=10, pady=3, sticky="w")
+        self.lbl_en_proceso.grid(row=2, column=0, padx=10, pady=3, sticky="w")
+        self.lbl_resueltos.grid(row=3, column=0, padx=10, pady=3, sticky="w")
+
+        ttk.Button(
+            resumen,
+            text="Actualizar reportes",
+            command=self._actualizar
+        ).grid(row=0, column=1, rowspan=4, padx=10, pady=5, sticky="ns")
+
+        tipos_frame = ttk.LabelFrame(self, text="Conteo por tipo de daño", padding=10)
+        tipos_frame.grid(row=1, column=0, padx=10, pady=5, sticky="ew")
+
+        tipos_frame.columnconfigure(0, weight=1)
+
+        self.tree_tipos = ttk.Treeview(
+            tipos_frame,
+            columns=("tipo", "cantidad"),
+            show="headings",
+            height=4
         )
 
-        tipos_frame = ttk.LabelFrame(self, text="Conteo por tipo de daño", padding=12)
-        tipos_frame.pack(fill="x", padx=12, pady=(0, 12))
-
-        self.tree_tipos = ttk.Treeview(tipos_frame, columns=("tipo", "cantidad"), show="headings", height=6)
         self.tree_tipos.heading("tipo", text="Tipo de daño")
         self.tree_tipos.heading("cantidad", text="Cantidad")
-        self.tree_tipos.column("tipo", width=360, anchor="center")
+
+        self.tree_tipos.column("tipo", width=300, anchor="center")
         self.tree_tipos.column("cantidad", width=120, anchor="center")
 
-        scrollbar_tipos = ttk.Scrollbar(tipos_frame, orient="vertical", command=self.tree_tipos.yview)
-        self.tree_tipos.configure(yscrollcommand=scrollbar_tipos.set)
+        self.tree_tipos.grid(row=0, column=0, sticky="ew")
 
-        self.tree_tipos.grid(row=0, column=0, sticky="nsew")
-        scrollbar_tipos.grid(row=0, column=1, sticky="ns")
+        general_frame = ttk.LabelFrame(self, text="Listado general de avisos", padding=10)
+        general_frame.grid(row=2, column=0, padx=10, pady=5, sticky="nsew")
 
-        tipos_frame.grid_rowconfigure(0, weight=1)
-        tipos_frame.grid_columnconfigure(0, weight=1)
-
-        general_frame = ttk.LabelFrame(self, text="Listado general de avisos", padding=12)
-        general_frame.pack(fill="both", expand=True, padx=12, pady=(0, 12))
+        general_frame.columnconfigure(0, weight=1)
+        general_frame.rowconfigure(0, weight=1)
 
         columns = ("codigo", "cedula", "tipo", "descripcion", "ubicacion", "fecha", "estado")
-        self.tree = ttk.Treeview(general_frame, columns=columns, show="headings", height=10)
 
-        headers = {
-            "codigo": "Código",
-            "cedula": "Cédula",
-            "tipo": "Tipo de daño",
-            "descripcion": "Descripción",
-            "ubicacion": "Ubicación",
-            "fecha": "Fecha",
-            "estado": "Estado"
-        }
-        widths = {
-            "codigo": 100,
-            "cedula": 120,
-            "tipo": 200,
-            "descripcion": 240,
-            "ubicacion": 180,
-            "fecha": 120,
-            "estado": 120
-        }
+        self.tree = ttk.Treeview(
+            general_frame,
+            columns=columns,
+            show="headings",
+            height=6
+        )
 
-        for col in columns:
-            self.tree.heading(col, text=headers[col])
-            self.tree.column(col, width=widths[col], anchor="center")
+        self.tree.heading("codigo", text="Código")
+        self.tree.heading("cedula", text="Cédula")
+        self.tree.heading("tipo", text="Tipo de daño")
+        self.tree.heading("descripcion", text="Descripción")
+        self.tree.heading("ubicacion", text="Ubicación")
+        self.tree.heading("fecha", text="Fecha")
+        self.tree.heading("estado", text="Estado")
+
+        self.tree.column("codigo", width=80, anchor="center")
+        self.tree.column("cedula", width=100, anchor="center")
+        self.tree.column("tipo", width=130, anchor="center")
+        self.tree.column("descripcion", width=220, anchor="center")
+        self.tree.column("ubicacion", width=150, anchor="center")
+        self.tree.column("fecha", width=100, anchor="center")
+        self.tree.column("estado", width=100, anchor="center")
 
         scrollbar_y = ttk.Scrollbar(general_frame, orient="vertical", command=self.tree.yview)
         scrollbar_x = ttk.Scrollbar(general_frame, orient="horizontal", command=self.tree.xview)
-        self.tree.configure(yscrollcommand=scrollbar_y.set, xscrollcommand=scrollbar_x.set)
+
+        self.tree.configure(
+            yscrollcommand=scrollbar_y.set,
+            xscrollcommand=scrollbar_x.set
+        )
 
         self.tree.grid(row=0, column=0, sticky="nsew")
         scrollbar_y.grid(row=0, column=1, sticky="ns")
         scrollbar_x.grid(row=1, column=0, sticky="ew")
-
-        general_frame.grid_rowconfigure(0, weight=1)
-        general_frame.grid_columnconfigure(0, weight=1)
 
     def _actualizar(self):
         estadisticas = self.reporte_controller.obtener_estadisticas_generales()
