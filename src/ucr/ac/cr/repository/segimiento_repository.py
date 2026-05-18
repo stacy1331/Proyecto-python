@@ -2,10 +2,12 @@ import json
 import os
 from src.ucr.ac.cr.model.seguimiento import Seguimiento
 
-
+# Repositorio encargado de administrar los seguimientos de los avisos.
 class SeguimientoRepository:
     def __init__(self, filename="data/seguimientos.json"):
         self.filename = filename
+
+        # Lista principal de seguimientos e índices para búsquedas rápidas.
         self._seguimientos = []
         self._seguimientos_by_codigo = {}
         self._seguimientos_by_aviso = {}
@@ -15,9 +17,12 @@ class SeguimientoRepository:
         if not os.path.exists(self.filename):
             return
 
+
+        # Lee los datos almacenados en el archivo JSON.
         with open(self.filename, "r", encoding="utf-8") as file:
             data = json.load(file)
 
+        # Convierte los objetos Seguimiento en diccionarios para guardarlos en JSON.
         for item in data:
             seguimiento = Seguimiento(
                 item["codigo_seguimiento"],
@@ -49,6 +54,7 @@ class SeguimientoRepository:
             json.dump(data, file, indent=4, ensure_ascii=False)
 
     def _agregar_a_memoria(self, seguimiento):
+        # Limpia espacios y normaliza los datos antes de almacenarlos.
         seguimiento.codigo_seguimiento = str(seguimiento.codigo_seguimiento).strip()
         seguimiento.codigo_aviso = str(seguimiento.codigo_aviso).strip()
         seguimiento.estado = str(seguimiento.estado).strip()
@@ -91,7 +97,7 @@ class SeguimientoRepository:
         for i in range(len(self._seguimientos)):
             if self._seguimientos[i].codigo_seguimiento == seguimiento_actualizado.codigo_seguimiento:
                 self._seguimientos[i] = seguimiento_actualizado
-
+        # Reconstruye los índices para mantener consistencia después de actualizar.
         self._seguimientos_by_codigo = {}
         self._seguimientos_by_aviso = {}
 

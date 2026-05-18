@@ -1,3 +1,4 @@
+# Servicio encargado de la autenticación y validación de usuarios.
 class AuthService:
     def __init__(self, usuario_repository):
         self.usuario_repository = usuario_repository

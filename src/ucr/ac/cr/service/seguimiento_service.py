@@ -1,6 +1,6 @@
 from src.ucr.ac.cr.model.seguimiento import Seguimiento
 
-
+# Servicio encargado de la lógica de negocio relacionada con los seguimientos.
 class SeguimientoService:
     def __init__(self, seguimiento_repository, aviso_repository):
         self.seguimiento_repository = seguimiento_repository

@@ -1,3 +1,4 @@
+# Servicio encargado de generar reportes y estadísticas del sistema.
 class ReporteService:
     def __init__(self, aviso_repository):
         self.aviso_repository = aviso_repository

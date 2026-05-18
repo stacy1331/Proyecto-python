@@ -1,6 +1,6 @@
 from src.ucr.ac.cr.model.usuario import Usuario
 
-
+# Servicio encargado de la lógica de negocio relacionada con los usuarios.
 class UsuarioService:
     def __init__(self, usuario_repository):
         self.usuario_repository = usuario_repository

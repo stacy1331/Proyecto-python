@@ -2,13 +2,17 @@ import json
 import os
 from src.ucr.ac.cr.model.usuario import Usuario
 
-
+# Repositorio encargado de administrar los usuarios del sistema.
 class UsuarioRepository:
     def __init__(self, filename="data/usuarios.json"):
         self.filename = filename
+
+        # Estructuras en memoria para almacenar y buscar usuarios rápidamente.
         self._usuarios = []
         self._usuarios_by_cedula = {}
+
         self._usuarios_by_correo = {}
+        # Carga automática de usuarios desde el archivo JSON.
         self._load()
 
     def _load(self):
@@ -35,7 +39,7 @@ class UsuarioRepository:
         os.makedirs(os.path.dirname(self.filename), exist_ok=True)
 
         data = []
-
+        # Convierte los objetos Usuario en formato JSON.
         for usuario in self._usuarios:
             data.append({
                 "cedula": usuario.cedula,

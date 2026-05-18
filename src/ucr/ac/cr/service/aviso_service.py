@@ -1,6 +1,6 @@
 from src.ucr.ac.cr.model.aviso import Aviso
 
-
+# Servicio encargado de la lógica de negocio relacionada con los avisos.
 class AvisoService:
     def __init__(self, aviso_repository, usuario_repository):
         self.aviso_repository = aviso_repository

@@ -2,6 +2,8 @@ import json
 import os
 from src.ucr.ac.cr.model.aviso import Aviso
 
+# Repositorio encargado de administrar los avisos del sistema.
+# Permite guardar, buscar, actualizar y cargar avisos desde un archivo JSON.
 
 class AvisoRepository:
     def __init__(self, filename="data/avisos.json"):
@@ -74,45 +76,63 @@ class AvisoRepository:
         self._avisos_by_estado[aviso.estado].append(aviso)
 
     def add(self, aviso: Aviso):
+
+        # Evita códigos duplicados
         if aviso.codigo in self._avisos_by_codigo:
             raise ValueError("Ya existe un aviso con ese código.")
 
         self._agregar_a_memoria(aviso)
+        # Guarda cambios en el archivo JSON
         self._save()
 
     def get_by_codigo(self, codigo: str):
         return self._avisos_by_codigo.get(str(codigo).strip())
 
+    # Busca avisos por cédula del usuario
     def get_by_usuario(self, cedula_usuario: str):
         return list(self._avisos_by_usuario.get(str(cedula_usuario).strip(), []))
 
+    # Busca avisos por estado
     def get_by_estado(self, estado: str):
         return list(self._avisos_by_estado.get(str(estado).strip(), []))
 
+    # Retorna todos los avisos
     def get_all(self):
         return list(self._avisos)
 
+    # Verifica si existe un aviso con ese código
     def exists(self, codigo: str) -> bool:
         return str(codigo).strip() in self._avisos_by_codigo
 
+    # Actualiza un aviso existente
     def update(self, aviso_actualizado: Aviso):
+
+        # Valida que el aviso exista
         if aviso_actualizado.codigo not in self._avisos_by_codigo:
             raise ValueError("No existe un aviso con ese código.")
 
+        # Reemplaza el aviso actualizado
         for i in range(len(self._avisos)):
             if self._avisos[i].codigo == aviso_actualizado.codigo:
                 self._avisos[i] = aviso_actualizado
 
+        # Reconstruye índices y guarda cambios
         self._rebuild_indexes()
         self._save()
 
+    # Reconstruye todos los índices en memoria
     def _rebuild_indexes(self):
+
+        # Reinicia los índices
         self._avisos_by_codigo = {}
         self._avisos_by_usuario = {}
         self._avisos_by_estado = {}
 
         avisos_actuales = list(self._avisos)
+
+        # Reinicia la lista principal
         self._avisos = []
 
+        # Vuelve a agregar los avisos e índices
         for aviso in avisos_actuales:
             self._agregar_a_memoria(aviso)

@@ -3,6 +3,7 @@ import os
 import tkinter as tk
 from tkinter import messagebox
 
+# Importa los controladores, repositorios, servicios y vistas necesarios.
 from src.ucr.ac.cr.controller.aviso_controller import AvisoController
 from src.ucr.ac.cr.controller.login_controller import LoginController
 from src.ucr.ac.cr.controller.main_controller import MainController
@@ -23,7 +24,7 @@ from src.ucr.ac.cr.service.usuario_service import UsuarioService
 from src.ucr.ac.cr.view.login_view import LoginView
 from src.ucr.ac.cr.view.main_view import MainView
 
-
+# Prepara los archivos JSON necesarios para que el sistema pueda guardar datos.
 def preparar_archivos_json():
     os.makedirs("data", exist_ok=True)
 
@@ -47,6 +48,7 @@ def preparar_archivos_json():
             json.loads(contenido)
 
         except:
+            # Si el archivo no existe, está vacío o da error, lo inicializa como lista vacía.
             with open(archivo, "w", encoding="utf-8") as file:
                 json.dump([], file, indent=4, ensure_ascii=False)
 
@@ -54,7 +56,7 @@ def preparar_archivos_json():
 class App:
     def __init__(self):
         preparar_archivos_json()
-
+        # Configuración principal de la ventana.
         self.root = tk.Tk()
         self.root.title("Sistema de Gestión de Avisos Ciudadanos")
         self.root.geometry("900x600")
@@ -65,6 +67,7 @@ class App:
         self.mostrar_login()
 
     def _crear_controladores(self):
+        # Crea repositorios, servicios y controladores, conectando las capas del sistema.
         usuario_repository = UsuarioRepository()
         aviso_repository = AvisoRepository()
         seguimiento_repository = SeguimientoRepository()
